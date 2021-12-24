@@ -2,7 +2,6 @@ package ru.netology.delivery.test;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.Keys;
 import ru.netology.delivery.data.DataGenerator;
 import ru.netology.delivery.data.RegistrationByCardInfo;
 
@@ -22,10 +21,10 @@ public class DeliveryTest {
         Configuration.holdBrowserOpen = true;
         open("http://localhost:9999");
         RegistrationByCardInfo info = DataGenerator.Registration.generateByCard("ru");
-        String firstDate = info.getCardExpire().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        String firstDate = generateDate(12);
         String changeTheDate = generateDate(50);
 
-        $("[data-test-id='city']").setValue(info.getCity());
+        $("[data-test-id='city'] input").setValue(info.getCity());
         $ ( " [data-test-id = 'date'] input" ).doubleClick().sendKeys(BACK_SPACE);
         $("[data-test-id='date'] input").setValue(firstDate);
         $("[data-test-id='name'] input").setValue(info.getName());

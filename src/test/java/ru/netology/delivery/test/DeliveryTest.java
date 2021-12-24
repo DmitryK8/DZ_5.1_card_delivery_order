@@ -2,7 +2,6 @@ package ru.netology.delivery.test;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.Keys;
 import ru.netology.delivery.data.DataGenerator;
 import ru.netology.delivery.data.RegistrationByCardInfo;
 
@@ -17,7 +16,6 @@ import static org.openqa.selenium.Keys.CONTROL;
 
 public class DeliveryTest {
 
-
     @Test
     void shouldChangeTheDate() {
         Configuration.holdBrowserOpen = true;
@@ -28,7 +26,7 @@ public class DeliveryTest {
 
 
         $("[data-test-id='city'] input").setValue(info.getCity());
-        $ ( " [data-test-id = 'date'] input" ).doubleClick().sendKeys(BACK_SPACE);
+        $(" [data-test-id = 'date'] input").doubleClick().sendKeys(BACK_SPACE);
         $("[data-test-id='date'] input").setValue(firstDate);
         $("[data-test-id='name'] input").setValue(info.getName());
         $("[data-test-id='phone'] input").setValue(info.getPhone());
@@ -40,7 +38,7 @@ public class DeliveryTest {
         //удаление строк
         $("[data-test-id='city'] input").sendKeys(CONTROL + "a");
         $("[data-test-id='city'] input").sendKeys(BACK_SPACE);
-        $ ( " [data-test-id = 'date'] input" ).doubleClick().sendKeys(BACK_SPACE);
+        $(" [data-test-id = 'date'] input").doubleClick().sendKeys(BACK_SPACE);
         $("[data-test-id='name'] input").sendKeys(CONTROL + "a");
         $("[data-test-id='name'] input").sendKeys(BACK_SPACE);
         $("[data-test-id='phone'] input").sendKeys(CONTROL + "a");

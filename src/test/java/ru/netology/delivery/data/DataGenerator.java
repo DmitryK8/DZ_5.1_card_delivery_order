@@ -3,6 +3,7 @@ package ru.netology.delivery.data;
 
 import com.github.javafaker.Faker;
 import lombok.experimental.UtilityClass;
+import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 import java.util.Locale;
@@ -12,7 +13,8 @@ public class DataGenerator {
 
     public static class Registration {
 
-        public static RegistrationByCardInfo generateByCard(String locale) {
+        public static @NotNull
+        RegistrationByCardInfo generateByCard(String locale) {
             Faker faker = new Faker(new Locale(locale));
             return new RegistrationByCardInfo(
                     faker.address().city(),

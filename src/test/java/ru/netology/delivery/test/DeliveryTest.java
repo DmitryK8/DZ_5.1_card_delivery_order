@@ -1,6 +1,5 @@
 package ru.netology.delivery.test;
 
-import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Test;
 import ru.netology.delivery.data.DataGenerator;
 import ru.netology.delivery.data.RegistrationByCardInfo;

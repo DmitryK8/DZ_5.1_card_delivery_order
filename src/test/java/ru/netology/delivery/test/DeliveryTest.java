@@ -18,7 +18,6 @@ public class DeliveryTest {
 
     @Test
     void shouldChangeTheDate() {
-        Configuration.holdBrowserOpen = true;
         open("http://localhost:9999");
         RegistrationByCardInfo info = DataGenerator.Registration.generateByCard("ru");
         String firstDate = generateDate(12);

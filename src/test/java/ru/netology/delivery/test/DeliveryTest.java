@@ -19,8 +19,8 @@ public class DeliveryTest {
     void shouldChangeTheDate() {
         open("http://localhost:9999");
         RegistrationByCardInfo info = DataGenerator.Registration.generateByCard("ru");
-        String firstDate = generateDate(12);
-        String changeTheDate = generateDate(17);
+        String firstDate = DataGenerator.generateDate(12);
+        String changeTheDate = DataGenerator.generateDate(17);
 
 
         $("[data-test-id='city'] input").setValue(info.getCity());
@@ -35,7 +35,6 @@ public class DeliveryTest {
 
         //удаление строки
         $(" [data-test-id = 'date'] input").doubleClick().sendKeys(BACK_SPACE);
-        $("[data-test-id='name'] input").sendKeys(CONTROL + "a");
         //повторный ввод
         $("[data-test-id='date'] input").setValue(changeTheDate);
         $("[data-test-id='name'] input").doubleClick();
@@ -44,12 +43,8 @@ public class DeliveryTest {
         $("[data-test-id='success-notification']")
                 .shouldBe(visible).shouldHave(text("У вас уже запланирована встреча на другую дату. Перепланировать?"));
 
-        $("[data-test-id='success-notification']").shouldHave(exactText("Встреча успешно запланирована на " + firstDate), Duration.ofSeconds(15));
-
-
-    }
-
-    public static String generateDate(int days) {
-        return LocalDate.now().plusDays(days).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        $("[data-test-id='success-notification']").click();
+        $(".notification__content")
+                .shouldBe(visible).shouldHave(exactText("Встреча успешно запланирована на " + changeTheDate), Duration.ofSeconds(15));
     }
 }

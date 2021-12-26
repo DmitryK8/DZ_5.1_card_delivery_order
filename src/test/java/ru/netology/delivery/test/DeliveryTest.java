@@ -35,22 +35,12 @@ public class DeliveryTest {
 
         $(".notification__content").shouldHave(exactText("Встреча успешно запланирована на " + firstDate), Duration.ofSeconds(15));
 
-        //удаление строк
-        $("[data-test-id='city'] input").sendKeys(CONTROL + "a");
-        $("[data-test-id='city'] input").sendKeys(BACK_SPACE);
+        //удаление строки
         $(" [data-test-id = 'date'] input").doubleClick().sendKeys(BACK_SPACE);
         $("[data-test-id='name'] input").sendKeys(CONTROL + "a");
-        $("[data-test-id='name'] input").sendKeys(BACK_SPACE);
-        $("[data-test-id='phone'] input").sendKeys(CONTROL + "a");
-        $("[data-test-id='phone'] input").sendKeys(BACK_SPACE);
-        $("[data-test-id='agreement']").click();
-
         //повторный ввод
-        $("[data-test-id='city'] input").setValue(info.getCity());
         $("[data-test-id='date'] input").setValue(changeTheDate);
-        $("[data-test-id='name'] input").setValue(info.getName());
-        $("[data-test-id='phone'] input").setValue(info.getPhone());
-        $("[data-test-id='agreement']").click();
+        $("[data-test-id='name'] input").doubleClick();
         $$(".button__text").find(exactText("Запланировать")).click();
 
         $("[data-test-id='success-notification']")

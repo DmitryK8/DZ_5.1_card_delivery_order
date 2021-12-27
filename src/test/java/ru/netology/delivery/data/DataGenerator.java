@@ -13,12 +13,11 @@ public class DataGenerator {
 
     @UtilityClass
     public static class Registration {
-
-
-        public RegistrationByCardInfo generateByCard(String locale) {
-            Faker faker = new Faker(new Locale(locale));
+        public static RegistrationByCardInfo generateInfo(String locale) {
+            Faker faker = new Faker(new Locale("ru"));
             return new RegistrationByCardInfo(
                     faker.address().city(),
+                    generateDate(12),
                     faker.name().fullName(),
                     faker.phoneNumber().phoneNumber()
             );

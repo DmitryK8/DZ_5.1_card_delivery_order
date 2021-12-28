@@ -17,7 +17,6 @@ public class DataGenerator {
             Faker faker = new Faker(new Locale("ru"));
             return new RegistrationByCardInfo(
                     faker.address().city(),
-                    generateDate(12),
                     faker.name().fullName(),
                     faker.phoneNumber().phoneNumber()
             );

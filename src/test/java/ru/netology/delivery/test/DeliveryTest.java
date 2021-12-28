@@ -37,7 +37,7 @@ public class DeliveryTest {
         $("[data-test-id='date'] input").setValue(changeTheDate);
         $(".button__text").click();
         $("[data-test-id=\"replan-notification\"]").shouldBe(Condition.text("Необходимо подтверждение"));
-        $("[data-test-id=\"replan-notification\"] div[class*=\"notification__content\"] button span[class*=\"button__content\"] span[class*=\"button__text\"]").click();
+        $("[data-test-id=\"replan-notification\"]").click();
         $("[data-test-id=\"success-notification\"] ").shouldHave(Condition.text("Успешно!\n" +
                 "Встреча успешно запланирована на " + changeTheDate));
     }
